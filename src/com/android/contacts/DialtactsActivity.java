@@ -115,7 +115,8 @@ public class DialtactsActivity extends TabActivity implements TabHost.OnTabChang
 
         setupCallLogTab();
         setupContactsTab();
-        setupFavoritesTab();
+        // Just Say No to favorites...
+        // setupFavoritesTab();
 
         setCurrentTab(intent);
 
