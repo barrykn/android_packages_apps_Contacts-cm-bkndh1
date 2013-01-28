@@ -992,18 +992,6 @@ public class ViewContactActivity extends Activity
 
                         entry.isPrimary = isSuperPrimary;
                         mPhoneEntries.add(entry);
-                        
-                        //Wysie: Workaround for the entry.type bug, since entry.type always returns -1
-                        
-                        Integer type = entryValues.getAsInteger(Phone.TYPE);
-                        //Wysie: Bug here, entry.type always returns -1.
-
-                        if ((type != null && type == CommonDataKinds.Phone.TYPE_MOBILE) || mShowSmsLinksForAllPhones) {
-                            // Add an SMS entry
-                            if (kind.iconAltRes > 0) {
-                                entry.secondaryActionIcon = kind.iconAltRes;
-                            }
-                        }
                     } else if (Email.CONTENT_ITEM_TYPE.equals(mimeType) && hasData) {
                         // Build email entries
                         entry.intent = new Intent(Intent.ACTION_SENDTO,
