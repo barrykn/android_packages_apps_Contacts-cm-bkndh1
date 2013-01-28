@@ -229,7 +229,7 @@ public class ViewContactActivity extends Activity
         setContentView(R.layout.contact_card_layout);
 
         mContactHeaderWidget = (ContactHeaderWidget) findViewById(R.id.contact_header_widget);
-        mContactHeaderWidget.showStar(true);
+        mContactHeaderWidget.showStar(false);
         mContactHeaderWidget.setExcludeMimes(new String[] {
             Contacts.CONTENT_ITEM_TYPE
         });
