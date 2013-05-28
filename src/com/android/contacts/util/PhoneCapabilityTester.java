@@ -76,10 +76,8 @@ public final class PhoneCapabilityTester {
      * Returns true if the device has an SMS application installed.
      */
     public static boolean isSmsIntentRegistered(Context context) {
-        // Don't cache the result as the user might install third party apps to send SMS
-        final Intent intent = new Intent(Intent.ACTION_SENDTO,
-                Uri.fromParts(Constants.SCHEME_SMSTO, "", null));
-        return isIntentRegistered(context, intent);
+        // Don't even pretend we can do SMS.
+        return false;
     }
 
     /**
