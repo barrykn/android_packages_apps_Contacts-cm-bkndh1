@@ -264,7 +264,8 @@ public class ContactLoaderFragment extends Fragment implements FragmentKeyListen
         editMenu.setVisible(mOptionsMenuEditable);
 
         final MenuItem deleteMenu = menu.findItem(R.id.menu_delete);
-        deleteMenu.setVisible(mOptionsMenuEditable);
+        //deleteMenu.setVisible(mOptionsMenuEditable);
+        deleteMenu.setVisible(false);
 
         final MenuItem shareMenu = menu.findItem(R.id.menu_share);
         shareMenu.setVisible(mOptionsMenuShareable);
