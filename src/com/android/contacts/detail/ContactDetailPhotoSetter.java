@@ -62,37 +62,8 @@ public class ContactDetailPhotoSetter extends ImageViewDrawableSetter {
 
         @Override
         public void onClick(View v) {
-            // Assemble the intent.
-            RawContactDeltaList delta = mContactData.createRawContactDeltaList();
-
-            // Find location and bounds of target view, adjusting based on the
-            // assumed local density.
-            final float appScale =
-                    mContext.getResources().getCompatibilityInfo().applicationScale;
-            final int[] pos = new int[2];
-            v.getLocationOnScreen(pos);
-
-            // rect is the bounds (in pixels) of the photo view in screen coordinates
-            final Rect rect = new Rect();
-            rect.left = (int) (pos[0] * appScale + 0.5f);
-            rect.top = (int) (pos[1] * appScale + 0.5f);
-            rect.right = (int) ((pos[0] + v.getWidth()) * appScale + 0.5f);
-            rect.bottom = (int) ((pos[1] + v.getHeight()) * appScale + 0.5f);
-
-            Uri photoUri = null;
-            if (mContactData.getPhotoUri() != null) {
-                photoUri = Uri.parse(mContactData.getPhotoUri());
-            }
-            Intent photoSelectionIntent = PhotoSelectionActivity.buildIntent(mContext,
-                    photoUri, mPhotoBitmap, mPhotoBytes, rect, delta, mContactData.isUserProfile(),
-                    mContactData.isDirectoryEntry(), mExpandPhotoOnClick);
-            // Cache the bitmap directly, so the activity can pull it from the
-            // photo manager.
-            if (mPhotoBitmap != null) {
-                ContactPhotoManager.getInstance(mContext).cacheBitmap(
-                        photoUri, mPhotoBitmap, mPhotoBytes);
-            }
-            mContext.startActivity(photoSelectionIntent);
+            // Don't even let the click through.
+            return;
         }
     }
 
