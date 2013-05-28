@@ -1535,32 +1535,8 @@ public class ContactDetailFragment extends Fragment implements FragmentKeyListen
                         mContactData.isDirectoryEntry(), mContactData.isUserProfile(),
                         mContactData.getStarred());
                 final Uri lookupUri = mContactData.getLookupUri();
-                favoritesStar.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Toggle "starred" state
-                        // Make sure there is a contact
-                        if (lookupUri != null) {
-                            // Read the current starred value from the UI instead of using the last
-                            // loaded state. This allows rapid tapping without writing the same
-                            // value several times
-                            final Object tag = favoritesStar.getTag();
-                            final boolean isStarred = tag == null
-                                    ? false : (Boolean) favoritesStar.getTag();
-
-                            // To improve responsiveness, swap out the picture (and tag) in the UI
-                            // already
-                            ContactDetailDisplayUtils.configureStarredImageView(favoritesStar,
-                                    mContactData.isDirectoryEntry(), mContactData.isUserProfile(),
-                                    !isStarred);
-
-                            // Now perform the real save
-                            Intent intent = ContactSaveService.createSetStarredIntent(
-                                    getContext(), lookupUri, !isStarred);
-                            getContext().startService(intent);
-                        }
-                    }
-                });
+                // I don't want the Favorites star to do anything so
+                // I have removed the OnClickListener.
             }
 
             return result;
