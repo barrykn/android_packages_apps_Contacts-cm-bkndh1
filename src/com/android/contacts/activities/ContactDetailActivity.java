@@ -146,6 +146,9 @@ public class ContactDetailActivity extends ContactsActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         final MenuItem starredMenuItem = menu.findItem(R.id.menu_star);
+        if (starredMenuItem == null) // If it doesn't exist, there's
+            return true;             // nothing for us to do.
+
         starredMenuItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
