@@ -85,9 +85,9 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     private boolean mShowTabsAsText;
 
     public interface TabState {
-        public static int GROUPS = 0;
-        public static int ALL = 1;
-        public static int FAVORITES = 2;
+        public static int ALL = 0;
+        public static int FAVORITES = 1;
+        public static int GROUPS = 2;
 
         public static int COUNT = 3;
         public static int DEFAULT = ALL;
@@ -178,9 +178,9 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     }
 
     private void setupTabs() {
-        addTab(TabState.GROUPS, R.drawable.ic_tab_groups, R.string.contactsGroupsLabel);
         addTab(TabState.ALL, R.drawable.ic_tab_all, R.string.contactsAllLabel);
         addTab(TabState.FAVORITES, R.drawable.ic_tab_starred, R.string.contactsFavoritesLabel);
+        addTab(TabState.GROUPS, R.drawable.ic_tab_groups, R.string.contactsGroupsLabel);
     }
 
     private void setupNavigationList() {
