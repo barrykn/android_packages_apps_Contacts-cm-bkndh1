@@ -149,24 +149,8 @@ public class ContactDetailActivity extends ContactsActivity {
         starredMenuItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                // Toggle "starred" state
-                // Make sure there is a contact
-                if (mLookupUri != null) {
-                    // Read the current starred value from the UI instead of using the last
-                    // loaded state. This allows rapid tapping without writing the same
-                    // value several times
-                    final boolean isStarred = starredMenuItem.isChecked();
-
-                    // To improve responsiveness, swap out the picture (and tag) in the UI already
-                    ContactDetailDisplayUtils.configureStarredMenuItem(starredMenuItem,
-                            mContactData.isDirectoryEntry(), mContactData.isUserProfile(),
-                            !isStarred);
-
-                    // Now perform the real save
-                    Intent intent = ContactSaveService.createSetStarredIntent(
-                            ContactDetailActivity.this, mLookupUri, !isStarred);
-                    ContactDetailActivity.this.startService(intent);
-                }
+                // Do not toggle "starred" state.
+                // Just pretend we did.
                 return true;
             }
         });
