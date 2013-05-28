@@ -1436,7 +1436,9 @@ public class PeopleActivity extends ContactsActivity
                     clearFrequentsMenu.setVisible(hasFrequents());
                     break;
                 case TabState.ALL:
-                    addContactMenu.setVisible(true);
+                    // Remove the Add New Contact button
+                    //addContactMenu.setVisible(true);
+                    addContactMenu.setVisible(false);
                     addGroupMenu.setVisible(false);
                     contactsFilterMenu.setVisible(true);
                     clearFrequentsMenu.setVisible(false);
