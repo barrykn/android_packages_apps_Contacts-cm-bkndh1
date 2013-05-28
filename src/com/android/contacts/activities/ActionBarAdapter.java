@@ -528,15 +528,13 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     }
 
     private void saveLastTabPreference(int tab) {
-        mPrefs.edit().putInt(PERSISTENT_LAST_TAB, tab).apply();
+        // Don't bother saving the preference.
+        //mPrefs.edit().putInt(PERSISTENT_LAST_TAB, tab).apply();
+        return;
     }
 
     private int loadLastTabPreference() {
-        try {
-            return mPrefs.getInt(PERSISTENT_LAST_TAB, TabState.DEFAULT);
-        } catch (IllegalArgumentException e) {
-            // Preference is corrupt?
-            return TabState.DEFAULT;
-        }
+        // Just always use the default, not the saved preference.
+        return TabState.DEFAULT;
     }
 }
