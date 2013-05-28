@@ -271,7 +271,8 @@ public class ContactLoaderFragment extends Fragment implements FragmentKeyListen
         shareMenu.setVisible(mOptionsMenuShareable);
 
         final MenuItem createContactShortcutMenu = menu.findItem(R.id.menu_create_contact_shortcut);
-        createContactShortcutMenu.setVisible(mOptionsMenuCanCreateShortcut);
+        //createContactShortcutMenu.setVisible(mOptionsMenuCanCreateShortcut);
+        createContactShortcutMenu.setVisible(false);
     }
 
     public boolean isContactOptionsChangeEnabled() {
