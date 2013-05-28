@@ -255,7 +255,8 @@ public class ContactLoaderFragment extends Fragment implements FragmentKeyListen
         }
         final MenuItem optionsRingtone = menu.findItem(R.id.menu_set_ringtone);
         if (optionsRingtone != null) {
-            optionsRingtone.setVisible(mOptionsMenuOptions);
+            //optionsRingtone.setVisible(mOptionsMenuOptions);
+            optionsRingtone.setVisible(false);
         }
 
         final MenuItem editMenu = menu.findItem(R.id.menu_edit);
