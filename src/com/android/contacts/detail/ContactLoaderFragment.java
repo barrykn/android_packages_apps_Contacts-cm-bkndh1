@@ -250,7 +250,8 @@ public class ContactLoaderFragment extends Fragment implements FragmentKeyListen
         final MenuItem optionsSendToVoicemail = menu.findItem(R.id.menu_send_to_voicemail);
         if (optionsSendToVoicemail != null) {
             optionsSendToVoicemail.setChecked(mSendToVoicemailState);
-            optionsSendToVoicemail.setVisible(mOptionsMenuOptions);
+            //optionsSendToVoicemail.setVisible(mOptionsMenuOptions);
+            optionsSendToVoicemail.setVisible(false);
         }
         final MenuItem optionsRingtone = menu.findItem(R.id.menu_set_ringtone);
         if (optionsRingtone != null) {
