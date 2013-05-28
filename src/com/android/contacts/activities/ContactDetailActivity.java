@@ -29,7 +29,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
+// Not going to inflate the starredMenuItem (so that it will not appear).
+// Thus the next import would go unused.
+//import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -126,8 +128,9 @@ public class ContactDetailActivity extends ContactsActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.star, menu);
+        // Hide the star menu item by not inflating it.
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.star, menu);
         if (DEBUG_TRANSITIONS) {
             final MenuItem toggleSocial =
                     menu.add(mLoaderFragment.getLoadStreamItems() ? "less" : "more");
