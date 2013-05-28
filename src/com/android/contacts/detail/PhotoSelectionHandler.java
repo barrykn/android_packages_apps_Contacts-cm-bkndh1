@@ -88,7 +88,9 @@ public abstract class PhotoSelectionHandler implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        final PhotoActionListener listener = getListener();
+        // Disable the popup menu.
+        //final PhotoActionListener listener = getListener();
+        final PhotoActionListener listener = null;
         if (listener != null) {
             if (getWritableEntityIndex() != -1) {
                 mPopup = PhotoActionPopup.createPopupMenu(
