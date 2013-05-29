@@ -250,24 +250,30 @@ public class ContactLoaderFragment extends Fragment implements FragmentKeyListen
         final MenuItem optionsSendToVoicemail = menu.findItem(R.id.menu_send_to_voicemail);
         if (optionsSendToVoicemail != null) {
             optionsSendToVoicemail.setChecked(mSendToVoicemailState);
-            optionsSendToVoicemail.setVisible(mOptionsMenuOptions);
+            //optionsSendToVoicemail.setVisible(mOptionsMenuOptions);
+            optionsSendToVoicemail.setVisible(false);
         }
         final MenuItem optionsRingtone = menu.findItem(R.id.menu_set_ringtone);
         if (optionsRingtone != null) {
-            optionsRingtone.setVisible(mOptionsMenuOptions);
+            //optionsRingtone.setVisible(mOptionsMenuOptions);
+            optionsRingtone.setVisible(false);
         }
 
         final MenuItem editMenu = menu.findItem(R.id.menu_edit);
-        editMenu.setVisible(mOptionsMenuEditable);
+        //editMenu.setVisible(mOptionsMenuEditable);
+        editMenu.setVisible(false);
 
         final MenuItem deleteMenu = menu.findItem(R.id.menu_delete);
-        deleteMenu.setVisible(mOptionsMenuEditable);
+        //deleteMenu.setVisible(mOptionsMenuEditable);
+        deleteMenu.setVisible(false);
 
         final MenuItem shareMenu = menu.findItem(R.id.menu_share);
-        shareMenu.setVisible(mOptionsMenuShareable);
+        //shareMenu.setVisible(mOptionsMenuShareable);
+        shareMenu.setVisible(false);
 
         final MenuItem createContactShortcutMenu = menu.findItem(R.id.menu_create_contact_shortcut);
-        createContactShortcutMenu.setVisible(mOptionsMenuCanCreateShortcut);
+        //createContactShortcutMenu.setVisible(mOptionsMenuCanCreateShortcut);
+        createContactShortcutMenu.setVisible(false);
     }
 
     public boolean isContactOptionsChangeEnabled() {

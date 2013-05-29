@@ -86,11 +86,11 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     private boolean mShowTabsAsText;
 
     public interface TabState {
-        public static int GROUPS = 0;
-        public static int ALL = 1;
-        public static int FAVORITES = 2;
+        public static int ALL = 0;
+        public static int FAVORITES = 1;
+        public static int GROUPS = 2;
 
-        public static int COUNT = 3;
+        public static int COUNT = 1;
         public static int DEFAULT = ALL;
     }
 
@@ -179,9 +179,9 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     }
 
     private void setupTabs() {
-        addTab(TabState.GROUPS, R.drawable.ic_tab_groups, R.string.contactsGroupsLabel);
         addTab(TabState.ALL, R.drawable.ic_tab_all, R.string.contactsAllLabel);
-        addTab(TabState.FAVORITES, R.drawable.ic_tab_starred, R.string.contactsFavoritesLabel);
+        //addTab(TabState.FAVORITES, R.drawable.ic_tab_starred, R.string.contactsFavoritesLabel);
+        //addTab(TabState.GROUPS, R.drawable.ic_tab_groups, R.string.contactsGroupsLabel);
     }
 
     private void setupNavigationList() {
@@ -528,15 +528,13 @@ public class ActionBarAdapter implements OnQueryTextListener, OnCloseListener {
     }
 
     private void saveLastTabPreference(int tab) {
-        mPrefs.edit().putInt(PERSISTENT_LAST_TAB, tab).apply();
+        // Don't bother saving the preference.
+        //mPrefs.edit().putInt(PERSISTENT_LAST_TAB, tab).apply();
+        return;
     }
 
     private int loadLastTabPreference() {
-        try {
-            return mPrefs.getInt(PERSISTENT_LAST_TAB, TabState.DEFAULT);
-        } catch (IllegalArgumentException e) {
-            // Preference is corrupt?
-            return TabState.DEFAULT;
-        }
+        // Just always use the default, not the saved preference.
+        return TabState.DEFAULT;
     }
 }

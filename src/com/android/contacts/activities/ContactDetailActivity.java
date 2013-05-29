@@ -41,7 +41,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
+// Not going to inflate the starredMenuItem (so that it will not appear).
+// Thus the next import would go unused.
+//import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -125,8 +127,9 @@ public class ContactDetailActivity extends ContactsActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.star, menu);
+        // Hide the star menu item by not inflating it.
+        //MenuInflater inflater = getMenuInflater();
+        //inflater.inflate(R.menu.star, menu);
         if (DEBUG_TRANSITIONS) {
             final MenuItem toggleSocial =
                     menu.add(mLoaderFragment.getLoadStreamItems() ? "less" : "more");
@@ -146,27 +149,14 @@ public class ContactDetailActivity extends ContactsActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         final MenuItem starredMenuItem = menu.findItem(R.id.menu_star);
+        if (starredMenuItem == null) // If it doesn't exist, there's
+            return true;             // nothing for us to do.
+
         starredMenuItem.setOnMenuItemClickListener(new OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                // Toggle "starred" state
-                // Make sure there is a contact
-                if (mLookupUri != null) {
-                    // Read the current starred value from the UI instead of using the last
-                    // loaded state. This allows rapid tapping without writing the same
-                    // value several times
-                    final boolean isStarred = starredMenuItem.isChecked();
-
-                    // To improve responsiveness, swap out the picture (and tag) in the UI already
-                    ContactDetailDisplayUtils.configureStarredMenuItem(starredMenuItem,
-                            mContactData.isDirectoryEntry(), mContactData.isUserProfile(),
-                            !isStarred);
-
-                    // Now perform the real save
-                    Intent intent = ContactSaveService.createSetStarredIntent(
-                            ContactDetailActivity.this, mLookupUri, !isStarred);
-                    ContactDetailActivity.this.startService(intent);
-                }
+                // Do not toggle "starred" state.
+                // Just pretend we did.
                 return true;
             }
         });
