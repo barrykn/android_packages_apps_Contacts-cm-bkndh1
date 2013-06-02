@@ -212,32 +212,8 @@ public class CallDetailHeader {
             mainActionIcon = R.drawable.ic_contacts_holo_dark;
             mainActionDescription =
                 mResources.getString(R.string.description_view_contact, nameOrNumber);
-        } else if (isVoicemailNumber) {
-            mainActionIntent = null;
-            mainActionIcon = 0;
-            mainActionDescription = null;
-        } else if (isSipNumber) {
-            // TODO: This item is currently disabled for SIP addresses, because
-            // the Insert.PHONE extra only works correctly for PSTN numbers.
-            //
-            // To fix this for SIP addresses, we need to:
-            // - define ContactsContract.Intents.Insert.SIP_ADDRESS, and use it here if
-            //   the current number is a SIP address
-            // - update the contacts UI code to handle Insert.SIP_ADDRESS by
-            //   updating the SipAddress field
-            // and then we can remove the "!isSipNumber" check above.
-            mainActionIntent = null;
-            mainActionIcon = 0;
-            mainActionDescription = null;
-        } else if (mCanPlaceCallsTo) {
-            mainActionIntent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-            mainActionIntent.setType(Contacts.CONTENT_ITEM_TYPE);
-            mainActionIntent.putExtra(Insert.PHONE, number);
-            mainActionIcon = R.drawable.ic_add_contact_holo_dark;
-            mainActionDescription = mResources.getString(R.string.description_add_contact);
         } else {
-            // If we cannot call the number, when we probably cannot add it as a contact either.
-            // This is usually the case of private, unknown, or payphone numbers.
+            // Do not allow the option of adding to contacts.
             mainActionIntent = null;
             mainActionIcon = 0;
             mainActionDescription = null;
