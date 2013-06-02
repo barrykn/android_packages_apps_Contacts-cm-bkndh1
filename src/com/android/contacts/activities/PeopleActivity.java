@@ -1523,7 +1523,8 @@ public class PeopleActivity extends ContactsActivity
                 return true;
             }
             case R.id.menu_search: {
-                onSearchRequested();
+                // Don't actually go into search mode. Just ignore it.
+                //onSearchRequested();
                 return true;
             }
             case R.id.menu_add_contact: {
