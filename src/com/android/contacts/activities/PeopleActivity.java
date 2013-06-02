@@ -1458,7 +1458,10 @@ public class PeopleActivity extends ContactsActivity
             HelpUtils.prepareHelpMenuItem(this, helpMenu, R.string.help_url_people_main);
         }
         final boolean showMiscOptions = !isSearchMode;
-        makeMenuItemVisible(menu, R.id.menu_search, showMiscOptions);
+
+        // Never show the search button.
+        makeMenuItemVisible(menu, R.id.menu_search, false);
+
         makeMenuItemVisible(menu, R.id.menu_import_export, showMiscOptions);
         makeMenuItemVisible(menu, R.id.menu_accounts, showMiscOptions);
         makeMenuItemVisible(menu, R.id.menu_settings,
