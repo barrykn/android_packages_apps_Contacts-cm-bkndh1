@@ -232,10 +232,11 @@ public class CallDetailActivity extends ListActivity implements
                     entry.label = callLabel;
                     actions.add(entry);
 
-                    Intent smsIntent = new Intent(Intent.ACTION_SENDTO,
-                            Uri.fromParts("sms", mNumber, null));
-                    actions.add(new ViewEntry(R.drawable.sym_action_sms,
-                            getString(R.string.menu_sendTextMessage), smsIntent));
+                    // Do not want SMS intent!
+                    //Intent smsIntent = new Intent(Intent.ACTION_SENDTO,
+                    //        Uri.fromParts("sms", mNumber, null));
+                    //actions.add(new ViewEntry(R.drawable.sym_action_sms,
+                    //        getString(R.string.menu_sendTextMessage), smsIntent));
 
                     // Let user view contact details if they exist, otherwise add option
                     // to create new contact from this number.
