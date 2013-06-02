@@ -524,6 +524,7 @@ public class DialtactsActivity extends TransactionSafeActivity
         if (mSearchButton != null) {
             mSearchButton.setMinimumWidth(fakeMenuItemWidth);
             mSearchButton.setOnClickListener(this);
+            mSearchButton.setVisibility(View.INVISIBLE);
         }
 
         // Setup the ActionBar tabs (the order matches the tab-index contants TAB_INDEX_*)
@@ -1035,7 +1036,7 @@ public class DialtactsActivity extends TransactionSafeActivity
         callStatsMenuItem.setVisible(false);
         if (mDuringSwipe || mUserTabClick) {
             // During horizontal movement, the real ActionBar menu items are shown
-            searchMenuItem.setVisible(true);
+            searchMenuItem.setVisible(false);
             callSettingsMenuItem.setVisible(true);
             // When there is a permanent menu key, there is no overflow icon on the right of
             // the action bar which would force the search menu item (if it is visible) to the
@@ -1045,7 +1046,9 @@ public class DialtactsActivity extends TransactionSafeActivity
             // This is when the user is looking at the dialer pad.  In this case, the real
             // ActionBar is hidden and fake menu items are shown.
             // Except in landscape, in which case the real search menu item is shown.
-            searchMenuItem.setVisible(ContactsUtils.isLandscape(this));
+            // ...Actually, let's try to hide it all the time!
+            //searchMenuItem.setVisible(ContactsUtils.isLandscape(this));
+            searchMenuItem.setVisible(false);
             // If a permanent menu key is available, then we need to show the call settings item
             // so that the call settings item can be invoked by the permanent menu key.
             callSettingsMenuItem.setVisible(ViewConfiguration.get(this).hasPermanentMenuKey());
@@ -1063,7 +1066,7 @@ public class DialtactsActivity extends TransactionSafeActivity
         final MenuItem callStatsMenuItem = menu.findItem(R.id.menu_call_stats);
 
         // prepare the menu items
-        searchMenuItem.setVisible(true);
+        searchMenuItem.setVisible(false);
         filterOptionMenuItem.setVisible(false);
         addContactOptionMenuItem.setVisible(false);
         callSettingsMenuItem.setVisible(true);
@@ -1081,7 +1084,7 @@ public class DialtactsActivity extends TransactionSafeActivity
         final MenuItem callStatsMenuItem = menu.findItem(R.id.menu_call_stats);
 
         // prepare the menu items
-        searchMenuItem.setVisible(true);
+        searchMenuItem.setVisible(false);
         filterOptionMenuItem.setVisible(true);
         addContactOptionMenuItem.setVisible(true);
         callSettingsMenuItem.setVisible(true);
@@ -1258,11 +1261,7 @@ public class DialtactsActivity extends TransactionSafeActivity
         }
 
         if (mSearchButton != null) {
-            if (visible) {
-                mSearchButton.setVisibility(View.VISIBLE);
-            } else {
-                mSearchButton.setVisibility(View.INVISIBLE);
-            }
+            mSearchButton.setVisibility(View.INVISIBLE);
         }
         if (mMenuButton != null) {
             if (visible && !ViewConfiguration.get(this).hasPermanentMenuKey()) {
