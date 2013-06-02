@@ -1440,7 +1440,9 @@ public class PeopleActivity extends ContactsActivity
                     //addContactMenu.setVisible(true);
                     addContactMenu.setVisible(false);
                     addGroupMenu.setVisible(false);
-                    contactsFilterMenu.setVisible(true);
+                    // Don't allow access to search mode either.
+                    //contactsFilterMenu.setVisible(true);
+                    contactsFilterMenu.setVisible(false);
                     clearFrequentsMenu.setVisible(false);
                     break;
                 case TabState.GROUPS:
