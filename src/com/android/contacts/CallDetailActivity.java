@@ -240,17 +240,18 @@ public class CallDetailActivity extends ListActivity implements
 
                     // Let user view contact details if they exist, otherwise add option
                     // to create new contact from this number.
+                    // (Actually, no, let's not add that option.)
                     if (personUri != null) {
                         Intent viewIntent = new Intent(Intent.ACTION_VIEW, personUri);
                         StickyTabs.setTab(viewIntent, getIntent());
                         actions.add(new ViewEntry(R.drawable.sym_action_view_contact,
                                 getString(R.string.menu_viewContact), viewIntent));
-                    } else {
-                        Intent createIntent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
-                        createIntent.setType(Contacts.CONTENT_ITEM_TYPE);
-                        createIntent.putExtra(Insert.PHONE, mNumber);
-                        actions.add(new ViewEntry(R.drawable.sym_action_add,
-                                getString(R.string.recentCalls_addToContact), createIntent));
+                    //} else {
+                    //    Intent createIntent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
+                    //    createIntent.setType(Contacts.CONTENT_ITEM_TYPE);
+                    //    createIntent.putExtra(Insert.PHONE, mNumber);
+                    //    actions.add(new ViewEntry(R.drawable.sym_action_add,
+                    //            getString(R.string.recentCalls_addToContact), createIntent));
                     }
 
                     ViewAdapter adapter = new ViewAdapter(this, actions);
