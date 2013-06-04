@@ -45,7 +45,9 @@ public class PhoneNumberHelper {
 
     /** Returns true if it is possible to send an SMS to the given number. */
     public boolean canSendSmsTo(CharSequence number) {
-        return canPlaceCallsTo(number) && !isVoicemailNumber(number) && !isSipNumber(number);
+        // We do not want to send SMS to anyone.
+        //return canPlaceCallsTo(number) && !isVoicemailNumber(number) && !isSipNumber(number);
+        return false;
     }
 
     /**
